@@ -17,6 +17,10 @@ module.controller('UsersCtrl',
     // Highlight btn in the nav bar
     $rootScope.navtop = 0;
     $scope.usersSaved = [];
+    $scope.currentPage = 0;
+    $scope.gap = 3;
+    $scope.usersPerPage = 1;
+    $scope.total = 3;
 
     var Users = $resource(conf.epApi + '/user', {}, {
       'get': {
@@ -46,11 +50,44 @@ module.controller('UsersCtrl',
 
 
     $scope.getUser = function(email) {
-      UserEmail.get({'email':email}, function(res) {
+      //UserEmail.get({'email':email}, function(res) {
+      var res = {
+        data: {
+          "_id": "53275061dd938e2c1f000002",
+          "currentPlan": {
+            "plan": {
+              "bandwidth": {
+                "upload": 100,
+                "download": 100
+              },
+              "name": "Free",
+              "price": 0,
+              "duration": 30,
+              "storage": 100,
+              "sharedQuota": 100,
+              "_id": "5327503890066f8c1c000005"
+            },
+            "usage": {
+              "bandwidth": {
+                "download": 25,
+                "upload": 20
+              },
+              "share": 40,
+              "storage": 60
+            },
+            "active": true,
+            "billingDate": "2014-03-17T19:43:29.147Z"
+          },
+          "email": "elodie555@yopmail.com",
+          "verified": true,
+          "isAllowed": true,
+          "registrationDate": "2014-03-17T19:43:29.140Z"
+        }
+      };
         $scope.usersSaved = $scope.users;
         $scope.users = [];
         $scope.users.push(res.data);
-      }, function(err) { $scope.errorShow(err); });
+      //}, function(err) { $scope.errorShow(err); });
     };
 
 
@@ -70,6 +107,41 @@ module.controller('UsersCtrl',
           }
         }
       }, function(err) { $scope.errorShow(err); });
+    };
+
+
+    $scope.setPage = function(n) {
+      $scope.currentPage = n;
+    };
+
+
+    $scope.prevPage = function() {
+      if ($scope.currentPage > 0) {
+        $scope.currentPage--;
+      }
+    };
+
+
+    $scope.nextPage = function() {
+      if ($scope.currentPage < $scope.users.length - 1) {
+        $scope.currentPage++;
+      }
+    };
+
+
+    $scope.range = function(size, start, end) {
+      var ret = [];
+
+      if (size < end) {
+        end = size;
+        start = size - $scope.gap;
+      }
+
+      for (var i = start; i < end; i++) {
+        ret.push(i);
+      }
+
+      return ret;
     };
 
 

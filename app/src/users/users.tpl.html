@@ -30,8 +30,22 @@
           </tbody>
         </table>
 
-        <p class="col-md-12" id="grid-view-msg" ng-show="plans.length === 0">
-          There isn't any <span class="highlight">plan</span> yet.
+          <ul class="pagination">
+            <li ng-class="{disabled: currentPage === 0}">
+              <a href ng-click="prevPage()">« Prev</a>
+            </li>
+
+            <li ng-repeat="n in range(users.length, currentPage, currentPage + gap)" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+              <a href ng-bind="n + 1">1</a>
+            </li>
+
+            <li ng-class="{disabled: (currentPage) === users.length - 1}">
+              <a href ng-click="nextPage()">Next »</a>
+            </li>
+          </ul>
+
+        <p class="col-md-12" id="grid-view-msg" ng-show="users.length === 0">
+          There isn't any <span class="highlight">user</span> yet.
         </p>
 
       </div>
