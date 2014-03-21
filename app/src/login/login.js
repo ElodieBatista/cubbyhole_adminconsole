@@ -12,9 +12,27 @@ module.config(function config($routeProvider) {
 });
 
 module.controller('LoginCtrl',
-  function LoginCtrl($rootScope, $scope, $location, $http) {
-    $scope.signin = function(form) {
+  function LoginCtrl(conf, $rootScope, $scope, $resource, $location, $http) {
+    var Auth = $resource(conf.epApi + '/auth/signin', {}, {
+      'post': {
+        method:'POST',
+        params: {
+          email: '@email',
+          pass: '@pass',
+          rememberMe: '@rememberMe'
+        }
+      }
+    });
 
+    $scope.signin = function(form) {
+      Auth.post({'email':form.email, 'pass':form.pass, 'rememberMe':form.rememberMe}, function(res) {
+        localStorage.setItem('cubbyhole-consoleApp-token', res.profile.token);
+        localStorage.setItem('cubbyhole-consoleApp-profile', JSON.stringify(res.profile));
+        $http.defaults.headers.common['X-Cub-AuthToken'] = res.profile.token;
+        $rootScope.profile = res.profile;
+
+        $location.path('/users');
+      }, function(err) { $scope.errorShow(err); });
     };
 
     /*var profile = JSON.parse(localStorage.getItem('dataAuth'));

@@ -19,17 +19,17 @@
 
             <div class="tab-content">
               <div class="tab-pane active">
-                <form class="sign-form" name="formSignin" method="POST" ng-submit="signin()">
+                <form class="sign-form" name="formSignin" method="POST" ng-submit="signin(formSignin)">
                   <div class="input-prepend" ng-class="{'input-prepend-active': focused0}">
                     <i class="fa fa-envelope input-icon"></i>
                     <input class="input-text" type="email" placeholder="Email" required ng-model="formSignin.email" ng-init="focused0 = false" ng-focus="focused0 = true" ng-blur="focused0 = false">
                   </div>
                   <div class="input-prepend" ng-class="{'input-prepend-active': focused1}">
                     <i class="fa fa-lock input-icon"></i>
-                    <input class="input-text" type="password" placeholder="Password" required pattern=".{6,}" title="6 character minimum length" ng-model="formSignin.password" ng-init="focused1 = false" ng-focus="focused1 = true" ng-blur="focused1 = false">
+                    <input class="input-text" type="password" placeholder="Password" required pattern=".{6,}" title="6 character minimum length" ng-model="formSignin.pass" ng-init="focused1 = false" ng-focus="focused1 = true" ng-blur="focused1 = false">
                   </div>
 
-                  <input id="home-remember-box" type="checkbox" ng-model="formSignin.remember">
+                  <input id="home-remember-box" type="checkbox" ng-model="formSignin.rememberMe">
                   <label class="home-remember-label" for="home-remember-box">Remember me</label>
 
                   <div id="signin-spinner"></div>

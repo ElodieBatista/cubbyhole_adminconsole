@@ -7,14 +7,14 @@ module.config(function config($routeProvider) {
     .when('/plans',
     {
       templateUrl: '/src/plans/plans.tpl.html',
-      controller: 'PlansCtrl'/*,
-      authRequired: true*/
+      controller: 'PlansCtrl',
+      authRequired: true
     })
 });
 
 module.controller('PlansCtrl',
   function PlansCtrl(conf, $rootScope, $scope, $resource) {
-    // Highlight first btn in the nav bar
+    // Highlight btn in the nav bar
     $rootScope.navtop = 1;
 
     var Plans = $resource(conf.epApi + '/plan', {}, {
@@ -29,7 +29,7 @@ module.controller('PlansCtrl',
       }
     });
 
-    var Plan = $resource(conf.epApi + '/plan/:id', {}, {
+    var Plan = $resource(conf.epApi + '/plan/:id', {id:'@id'}, {
       'put': {
         method: 'PUT',
         params: {

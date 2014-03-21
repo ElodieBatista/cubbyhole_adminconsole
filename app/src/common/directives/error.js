@@ -15,46 +15,9 @@ module.directive('error', function() {
           0: 'Impossible to upload these items: '
         },
         500: 'Something went wrong. Please, try again later.',
-        item: {
-          GET: {
-            404: 'This item doesn\'t exist.',
-            405: 'You can\'t download this folder because it is empty.'
-          },
+        auth: {
           POST: {
-            404: 'This item doesn\'t exist.',
-            422: 'This item\'s parent doesn\'t exist.'
-          },
-          DELETE: {
-            404: 'This item doesn\'t exist.'
-          },
-          PUT: {
-            401: 'You are not authorized to update this item.',
-            404: 'This item doesn\'t exist.',
-            422: 'This item\'s parent doesn\'t exist.'
-          }
-        },
-        share: {
-          GET: {
-            403: 'You don\'t have access to this item.',
-            404: 'This item doesn\'t exist.'
-          },
-          POST: {
-            404: 'This item doesn\'t exist.',
-            422: 'One or several of the members you entered are not Cubbyhole users.'
-          },
-          DELETE: {
-            404: 'This item doesn\'t exist.'
-          }
-        },
-        link: { // TEMP
-          GET: {
-            404: 'This link doesn\'t exist.'
-          },
-          POST: {
-            404: 'This link doesn\'t exist.'
-          },
-          DELETE: {
-            404: 'This link doesn\'t exist.'
+            404: 'Incorrect email or password.'
           }
         },
         user: {

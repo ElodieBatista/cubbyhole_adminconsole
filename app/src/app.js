@@ -10,7 +10,7 @@ angular.module('consoleApp', [
     'epApi': 'http://localhost:3000'
   })
   .config(function(conf, $locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider, $provide) {
-    $httpProvider.defaults.headers.common['X-Cub-AuthToken'] = localStorage.token;
+    $httpProvider.defaults.headers.common['X-Cub-AuthToken'] = localStorage.getItem('cubbyhole-consoleApp-token');
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
 
     function comesFromCubbyhole(url) {
@@ -49,22 +49,22 @@ angular.module('consoleApp', [
 
     $httpProvider.interceptors.push('httpInterceptor');
 
-    $routeProvider.otherwise({redirectTo: '/login'});
+    $routeProvider.otherwise({redirectTo: '/users'});
 
     $sceDelegateProvider.resourceUrlWhitelist([conf.epApi + '**', 'self'])
   })
-  .run(function($rootScope, $location, $window) {
+  .run(function($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
       if (next.authRequired === true && !$rootScope.getToken()) {
-        $window.location.href = 'index.html';
+        $location.path('/login')
       }
     });
 
     $rootScope.getToken = function() {
       if ($rootScope.token) {
         return $rootScope.token;
-      } else if (localStorage.token) {
-        $rootScope.token = localStorage.token;
+      } else if (localStorage.getItem('cubbyhole-consoleApp-token')) {
+        $rootScope.token = localStorage.getItem('cubbyhole-consoleApp-token');
         return $rootScope.token;
       } else {
         return null;
@@ -74,8 +74,8 @@ angular.module('consoleApp', [
     $rootScope.getProfile = function() {
       if ($rootScope.profile) {
         return $rootScope.profile;
-      } else if (localStorage.profile) {
-        $rootScope.profile = JSON.parse(localStorage.profile);
+      } else if (localStorage.getItem('cubbyhole-consoleApp-profile')) {
+        $rootScope.profile = JSON.parse(localStorage.getItem('cubbyhole-consoleApp-profile'));
         return $rootScope.profile;
       } else {
         return null;

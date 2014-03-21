@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./"><i class="navtop-icon fa fa-th"></i> Cubbyhole</a>
+          <a class="navbar-brand" href="http://localhost:8000/"><i class="navtop-icon fa fa-th"></i> Cubbyhole</a>
         </div>
 
         <nav class="collapse navbar-collapse bs-navbar-collapse navtop-items-container" ng-if="getProfile() !== undefined && getProfile() !== null" role="navigation">
@@ -37,7 +37,7 @@
             <li class="navtop-item dropdown" ng-class="{active: navtop == 2}">
               <a data-toggle="dropdown" href="">Me &nbsp;&nbsp;<i class="fa fa-angle-down"></i></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li><a href="" ng-bind="getProfile().email"></a></li>
+                <li><span ng-bind="getProfile().email"></span></li>
                 <li><a href="index.html#/logout">Log out</a></li>
               </ul>
             </li>
@@ -81,7 +81,10 @@
     <script src="src/common/filters/size.js"></script>
     <script src="src/common/filters/date.js"></script>
     <script src="src/login/login.js"></script>
+    <script src="src/logout/logout.js"></script>
     <script src="src/plans/plans.js"></script>
     <script src="src/plans/planExplorer.js"></script>
+    <script src="src/users/users.js"></script>
+    <script src="src/users/userExplorer.js"></script>
   </body>
 </html>
