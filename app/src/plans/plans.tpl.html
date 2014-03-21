@@ -1,0 +1,48 @@
+<div class="container container-fill no-padding no-margin">
+  <div class="row row-fill quaternary">
+
+    <div class="col-md-10 col-md-offset-1" plan-explorer>
+
+      <div class="space-top-medium" ng-include src="'/src/plans/plansActionBar.tpl.html'"></div>
+
+      <div class="row grid-view-table-container">
+
+        <table class="col-md-12">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Duration</th>
+              <th>Storage</th>
+              <th>Shared Quota</th>
+              <th>Bandwidth Upload</th>
+              <th>Bandwidth Download</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="plan in plans track by $index" ng-class="{true:'itemActive',false:''}[itemActive._id == plan._id]" ng-click="toggleItem(plan);">
+              <td>
+                <span class="no-underline" ng-bind="plan.name"></span>
+              </td>
+              <td>{{plan.duration}} days</td>
+              <td>{{plan.storage}} Go</td>
+              <td>{{plan.sharedQuota}} Go</td>
+              <td>{{plan.bandwidth.upload}}Mbps</td>
+              <td>{{plan.bandwidth.download}}Mbps</td>
+              <td>{{plan.price}}€</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="col-md-12" id="grid-view-msg" ng-show="plans.length === 0">
+          There isn't any <span class="highlight">plan</span> yet.
+        </p>
+
+      </div>
+
+    </div>
+
+    <modal modal-opts="modalOpts" modalform="modalform" modal-color="'quaternary'"></modal>
+
+  </div>
+</div>
