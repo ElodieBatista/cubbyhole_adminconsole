@@ -552,6 +552,13 @@ footer {
 
 
 /* TABLES */
+.grid-view-table-container {
+  height: -webkit-calc(100% - 50px);
+  height: -moz-calc(100% - 50px);
+  height: calc(100% - 50px);
+  overflow-y: auto;
+}
+
 td {
   padding: 5px;
   white-space: nowrap;
@@ -573,6 +580,7 @@ thead {
 th {
   padding: 5px;
   font-weight: normal;
+  white-space: nowrap;
 }
 
 th:first-child {
