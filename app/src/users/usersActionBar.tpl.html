@@ -1,9 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
+<div class="row action-bar">
 
-</body>
-</html>
+  <ul class="action-bar-right">
+    <li class="action-bar-item" ng-show="itemActive && itemActive.isAllowed" ng-click="toggleAuthorisation(itemActive._id, false)">
+      <svg class="action-bar-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="23px" height="30px" viewBox="0 0 23 30" enable-background="new 0 0 23 30" xml:space="preserve">
+        <g>
+          <polygon fill="#010202" points="19.801,24.5 11.5,16.199 3.199,24.5 2.5,23.801 10.801,15.5 2.5,7.199 3.199,6.5 11.5,14.801
+            19.801,6.5 20.5,7.199 12.199,15.5 20.5,23.801 	"/>
+        </g>
+      </svg>
+      <span>Disallow</span>
+    </li>
+    <li class="action-bar-item" ng-show="itemActive && !itemActive.isAllowed" ng-click="toggleAuthorisation(itemActive._id, true)">
+      <svg class="action-bar-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+        <path d="M80.467,28.54c-1.562-1.562-4.096-1.562-5.658,0L40.868,62.48L27.194,48.806c-1.562-1.562-4.095-1.562-5.657,0
+        c-1.562,1.562-1.562,4.095,0,5.657L38.04,70.966c0.781,0.781,1.805,1.172,2.829,1.172s2.047-0.391,2.829-1.172l36.77-36.769
+        C82.028,32.634,82.028,30.102,80.467,28.54z"/>
+      </svg>
+      <span>Allow</span>
+    </li>
+
+    <li class="action-bar-separator" ng-show="itemActive"></li>
+    <li class="action-bar-item" data-toggle="modal" ng-show="usersSaved.length > 0" ng-click="clearSearch()">
+      <svg class="action-bar-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+        <g>
+          <path d="M61.235,70.901c-8.317,0-16.136-3.238-22.017-9.119c-12.14-12.141-12.14-31.895,0-44.035   c5.881-5.881,13.7-9.12,22.017-9.12c8.316,0,16.136,3.239,22.017,9.12c12.14,12.141,12.14,31.895,0,44.035   C77.371,67.663,69.552,70.901,61.235,70.901z M61.235,12.627c-7.249,0-14.063,2.823-19.189,7.948   c-10.58,10.581-10.58,27.797,0,38.378c5.125,5.125,11.94,7.947,19.189,7.947c7.248,0,14.062-2.822,19.188-7.947   c10.58-10.581,10.58-27.797,0-38.378C75.298,15.45,68.483,12.627,61.235,12.627z"/>
+        </g>
+        <g>
+          <rect x="19.618" y="58.184" transform="matrix(0.7071 0.7071 -0.7071 0.7071 60.1221 4.8974)" width="9.064" height="33.669"/>
+        </g>
+      </svg>
+      <span>Clear Search</span>
+    </li>
+    <li class="action-bar-item" data-toggle="modal" ng-show="usersSaved.length === 0" ng-click="ueOpenModalSearchUser()">
+      <svg class="action-bar-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+        <g>
+          <path d="M61.235,70.901c-8.317,0-16.136-3.238-22.017-9.119c-12.14-12.141-12.14-31.895,0-44.035   c5.881-5.881,13.7-9.12,22.017-9.12c8.316,0,16.136,3.239,22.017,9.12c12.14,12.141,12.14,31.895,0,44.035   C77.371,67.663,69.552,70.901,61.235,70.901z M61.235,12.627c-7.249,0-14.063,2.823-19.189,7.948   c-10.58,10.581-10.58,27.797,0,38.378c5.125,5.125,11.94,7.947,19.189,7.947c7.248,0,14.062-2.822,19.188-7.947   c10.58-10.581,10.58-27.797,0-38.378C75.298,15.45,68.483,12.627,61.235,12.627z"/>
+        </g>
+        <g>
+          <rect x="19.618" y="58.184" transform="matrix(0.7071 0.7071 -0.7071 0.7071 60.1221 4.8974)" width="9.064" height="33.669"/>
+        </g>
+      </svg>
+      <span>Search</span>
+    </li>
+  </ul>
+</div>

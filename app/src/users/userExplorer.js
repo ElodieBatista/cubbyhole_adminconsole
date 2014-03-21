@@ -1,7 +1,28 @@
+'use strict';
+
+var module = angular.module('consoleApp');
+
 /**
- * Created with JetBrains WebStorm.
- * User: Elodie
- * Date: 3/21/14
- * Time: 2:01 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
+module.directive('userExplorer', function() {
+  return {
+    restrict: 'A',
+    scope: '{}',
+    template: '',
+
+    link: function (scope, element, attrs) {
+      scope.ueOpenModalSearchUser = function() {
+        scope.modalOpts = {
+          title: 'Search for a user',
+          iconClass: 'fa-envelope',
+          submitFn: scope.getUser,
+          placeholder: 'User email address',
+          submitBtnVal: 'Search'
+        };
+
+        $('#appmodal').modal('show');
+      };
+    }
+  };
+});
