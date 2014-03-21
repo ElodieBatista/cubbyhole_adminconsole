@@ -1,0 +1,23 @@
+.navtop-items-list .navtop-item:nth-child(2),
+.navtop-items-list .navtop-item:nth-child(2).open > a {
+  background-image: -webkit-linear-gradient(rgb(122, 201, 67), rgb(122, 201, 67));
+  background-image: -moz-linear-gradient(rgb(122, 201, 67), rgb(122, 201, 67));
+  background-image: -o-linear-gradient(rgb(122, 201, 67), rgb(122, 201, 67));
+  background-image: -ms-linear-gradient(rgb(122, 201, 67), rgb(122, 201, 67));
+}
+
+.navtop-items-list .active:nth-child(2) > a {
+  color: rgb(122, 201, 67) !important;
+}
+
+.navtop-items-list .navtop-item:nth-child(3),
+.navtop-items-list .navtop-item:nth-child(3).open > a {
+  background-image: -webkit-linear-gradient(rgb(255, 108, 164), rgb(255, 108, 164));
+  background-image: -moz-linear-gradient(rgb(255, 108, 164), rgb(255, 108, 164));
+  background-image: -o-linear-gradient(rgb(255, 108, 164), rgb(255, 108, 164));
+  background-image: -ms-linear-gradient(rgb(255, 108, 164), rgb(255, 108, 164));
+}
+
+.navtop-items-list .navtop-item:nth-child(3) .dropdown-menu a:hover {
+  background-color: rgb(255, 108, 164);
+}

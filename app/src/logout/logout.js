@@ -17,6 +17,6 @@ module.controller('LogoutCtrl',
     localStorage.removeItem('cubbyhole-consoleApp-token');
     localStorage.removeItem('cubbyhole-consoleApp-profile');
     $rootScope.profile = null;
-    $location.path('/');
+    $location.path('/login');
   }
 );
