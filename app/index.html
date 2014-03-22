@@ -13,7 +13,7 @@
   <body id="ng-app" ng-app="consoleApp">
 
     <header class="navbar navbar-inverse navbar-fixed-top navtop-container" role="banner">
-      <div class="container">
+      <div class="container" ng-controller="NavbarCtrl">
 
         <div class="navbar-header">
           <button class="navbar-toggle navtop-toggle-button" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -27,13 +27,13 @@
 
         <nav class="collapse navbar-collapse bs-navbar-collapse navtop-items-container" ng-if="getProfile() !== undefined && getProfile() !== null" role="navigation">
           <ul class="nav navbar-nav navbar-right navtop-items-list">
-            <li class="navtop-item" ng-class="{active: navtop == 0}">
+            <li class="navtop-item" ng-class="{ active: isActive('/users')}">
               <a href="index.html#/users">Users</a>
             </li>
-            <li class="navtop-item" ng-class="{active: navtop == 1}">
+            <li class="navtop-item" ng-class="{ active: isActive('/plans')}">
               <a href="index.html#/plans">Plans</a>
             </li>
-            <li class="navtop-item dropdown" ng-class="{active: navtop == 2}">
+            <li class="navtop-item dropdown">
               <a data-toggle="dropdown" href="">Me &nbsp;&nbsp;<i class="fa fa-angle-down"></i></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li><span ng-bind="getProfile().email"></span></li>

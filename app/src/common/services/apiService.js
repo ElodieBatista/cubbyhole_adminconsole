@@ -13,9 +13,34 @@ module.factory('apiService', function(conf, $resource) {
           rememberMe: '@rememberMe'
         }
       }
-    })/*,
+    }),
 
-    Items: $resource(conf.epApi + '/item', {}, {
+
+    Plans: $resource(conf.epApi + '/plan', {}, {
+      'get': {
+        method: 'GET'
+      },
+      'post': {
+        method: 'POST',
+        params: {
+          plan:'@plan'
+        }
+      }
+    }),
+
+    Plan: $resource(conf.epApi + '/plan/:id', {id:'@id'}, {
+      'put': {
+        method: 'PUT',
+        params: {
+          plan:'@plan'
+        }
+      },
+      'delete': {
+        method: 'DELETE'
+      }
+    })
+
+    /*Items: $resource(conf.epApi + '/item', {}, {
       'get': {
         method: 'GET'
       },
