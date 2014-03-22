@@ -3,9 +3,9 @@
 var module = angular.module('consoleApp');
 
 /**
- * Defines the way to display a spinner
+ * Defines the way to display a modal
  */
-module.directive('modal', function($compile) {
+module.directive('modal', function() {
   return {
     restrict: 'E',
     scope: {
@@ -18,17 +18,11 @@ module.directive('modal', function($compile) {
     link: function(scope, elem, attrs) {
       scope.submitBtnClass = scope.modalColor + '-btn';
 
-      scope.$watch('modalOpts.template', function(newValue, oldValue) {
-        if (newValue !== undefined && newValue !== null) {
-          $(elem).find('#modal-body-custom').html($compile(scope.modalOpts.template)(scope));
-        }
+      $(elem).on('shown.bs.modal', function(e) {
+        $(this).find('input:not([type="file"]):not([type="submit"]):first').focus();
       });
 
-      $(elem).on('shown.bs.modal', function (e) {
-        $(this).find('input:not([type="file"]):first').focus();
-      });
-
-      $(elem).on('hide.bs.modal', function (e) {
+      $(elem).on('hide.bs.modal', function(e) {
         $(this).find('.input-text-empty-onclose').val('');
       });
 
