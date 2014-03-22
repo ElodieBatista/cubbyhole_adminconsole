@@ -23,7 +23,7 @@ module.directive('userExplorer', function() {
             '<div class="modal-body">' +
               '<div class="input-prepend" ng-class="{\'input-prepend-active\': focused0}">' +
                 '<i class="fa input-icon" ng-class="modalOpts.iconClass"></i>' +
-                '<input class="input-text" type="email" placeholder="{{modalOpts.placeholder}}" required ng-init="focused0 = false" ng-focus="focused0 = true" ng-blur="focused0 = false"/>' +
+                '<input class="input-text" type="email" ng-model="modalform.email" placeholder="{{modalOpts.placeholder}}" required ng-init="focused0 = false" ng-focus="focused0 = true" ng-blur="focused0 = false"/>' +
               '</div>' +
             '</div>'
         };

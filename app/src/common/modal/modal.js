@@ -29,7 +29,6 @@ module.directive('modal', function($compile) {
       });
 
       $(elem).on('hide.bs.modal', function (e) {
-        scope.modalform.name = '';
         $(this).find('.input-text-empty-onclose').val('');
       });
 

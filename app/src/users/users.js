@@ -28,7 +28,7 @@ module.controller('UsersCtrl',
       }
     });
 
-    var UserEmail = $resource(conf.epApi + '/user/:email', {email:'@email'}, {
+    var UserEmail = $resource(conf.epApi + '/user/email/:email', {email:'@email'}, {
       'get': {
         method: 'GET'
       }
@@ -49,45 +49,12 @@ module.controller('UsersCtrl',
     }, function(err) { $scope.errorShow(err); });
 
 
-    $scope.getUser = function(email) {
-      //UserEmail.get({'email':email}, function(res) {
-      var res = {
-        data: {
-          "_id": "53275061dd938e2c1f000002",
-          "currentPlan": {
-            "plan": {
-              "bandwidth": {
-                "upload": 100,
-                "download": 100
-              },
-              "name": "Free",
-              "price": 0,
-              "duration": 30,
-              "storage": 100,
-              "sharedQuota": 100,
-              "_id": "5327503890066f8c1c000005"
-            },
-            "usage": {
-              "bandwidth": {
-                "download": 25,
-                "upload": 20
-              },
-              "share": 40,
-              "storage": 60
-            },
-            "active": true,
-            "billingDate": "2014-03-17T19:43:29.147Z"
-          },
-          "email": "elodie555@yopmail.com",
-          "verified": true,
-          "isAllowed": true,
-          "registrationDate": "2014-03-17T19:43:29.140Z"
-        }
-      };
+    $scope.getUser = function(form) {
+      UserEmail.get({'email':form.email}, function(res) {
         $scope.usersSaved = $scope.users;
         $scope.users = [];
         $scope.users.push(res.data);
-      //}, function(err) { $scope.errorShow(err); });
+      }, function(err) { $scope.errorShow(err); });
     };
 
 
