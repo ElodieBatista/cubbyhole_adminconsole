@@ -71,6 +71,7 @@ module.controller('PlansCtrl',
         for (var i = 0, l = $scope.plans.length; i < l; i++) {
           if ($scope.plans[i]._id === id) {
             $scope.plans.splice(i, 1);
+            $scope.toggleItem(null);
             break;
           }
         }
