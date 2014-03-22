@@ -13,44 +13,21 @@ module.config(function config($routeProvider) {
 });
 
 module.controller('UsersCtrl',
-  function UsersCtrl(conf, $rootScope, $scope, $resource) {
-    // Highlight btn in the nav bar
-    $rootScope.navtop = 0;
+  function UsersCtrl(conf, $rootScope, $scope, apiService) {
     $scope.usersSaved = [];
     $scope.currentPage = 0;
     $scope.gap = 3;
     $scope.usersPerPage = 1;
     $scope.total = 3;
 
-    var Users = $resource(conf.epApi + '/user', {}, {
-      'get': {
-        method: 'GET'
-      }
-    });
 
-    var UserEmail = $resource(conf.epApi + '/user/email/:email', {email:'@email'}, {
-      'get': {
-        method: 'GET'
-      }
-    });
-
-    var User = $resource(conf.epApi + '/user/:id', {id:'@id'}, {
-      'put': {
-        method: 'PUT',
-        params: {
-          isAllowed:'@isAllowed'
-        }
-      }
-    });
-
-
-    Users.get(function(res) {
+    apiService.Users.get(function(res) {
       $scope.users = res.data;
     }, function(err) { $scope.errorShow(err); });
 
 
     $scope.getUser = function(form) {
-      UserEmail.get({'email':form.email}, function(res) {
+      apiService.UserEmail.get({'email':form.email}, function(res) {
         $scope.usersSaved = $scope.users;
         $scope.users = [];
         $scope.users.push(res.data);
@@ -66,7 +43,7 @@ module.controller('UsersCtrl',
 
 
     $scope.toggleAuthorisation = function(id, isAllowed) {
-      User.put({'id':id, 'isAllowed':isAllowed}, function(res) {
+      apiService.User.put({'id':id, 'isAllowed':isAllowed}, function(res) {
         for (var i = 0, l = $scope.users.length; i < l; i++) {
           if ($scope.users[i]._id === id) {
             $scope.users[i].isAllowed = isAllowed;
@@ -109,15 +86,6 @@ module.controller('UsersCtrl',
       }
 
       return ret;
-    };
-
-
-    $scope.toggleItem = function(item, forceSelect) {
-      if ($scope.itemActive === item && !forceSelect) {
-        $scope.itemActive = null;
-      } else {
-        $scope.itemActive = item;
-      }
     };
   }
 );
