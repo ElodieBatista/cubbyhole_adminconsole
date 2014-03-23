@@ -38,6 +38,7 @@ module.controller('PlansCtrl',
         for (var i = 0, l = $scope.plans.length; i < l; i++) {
           if ($scope.plans[i]._id === id) {
             $scope.plans[i] = res.data;
+            $scope.toggleItem($scope.plans[i], true);
             break;
           }
         }

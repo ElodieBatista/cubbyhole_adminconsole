@@ -50,32 +50,12 @@
   </div>
 </div>
 
-<!--div class="row">
-  <label class="col-md-3 no-margin no-padding">Upload (Mbps):</label>
-  <div class="col-md-9 no-padding">
-    <div class="input-prepend" ng-class="{'input-prepend-active': focused4}">
-      <i class="fa input-icon fa-arrow-up"></i>
-      <input class="input-text" type="number" ng-model="modalform.bandwidth.upload" placeholder="Bandwidth Upload (Mbps)" required ng-init="focused4 = false" ng-focus="focused4 = true" ng-blur="focused4 = false" />
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <label class="col-md-3 no-margin no-padding">Download (Mbps):</label>
-  <div class="col-md-9 no-padding">
-    <div class="input-prepend" ng-class="{'input-prepend-active': focused5}">
-      <i class="fa input-icon fa-arrow-down"></i>
-      <input class="input-text" type="number" ng-model="modalform.bandwidth.download" placeholder="Bandwidth Download (Mbps)" required ng-init="focused5 = false" ng-focus="focused5 = true" ng-blur="focused5 = false" />
-    </div>
-  </div>
-</div-->
-
-<div class="row">
+<div class="row" ng-show="!modalform.isNotRemovable">
   <label class="col-md-3 no-margin no-padding">Price (€):</label>
   <div class="col-md-9 no-padding">
-    <div class="input-prepend" ng-class="{'input-prepend-active': focused6}">
+    <div class="input-prepend" ng-class="{'input-prepend-active': focused5}">
       <i class="fa input-icon fa-eur"></i>
-      <input class="input-text" type="number" step="any" ng-model="modalform.price" placeholder="Price (€)" required ng-init="focused6 = false" ng-focus="focused6 = true" ng-blur="focused6 = false" />
+      <input class="input-text" type="number" step="any" ng-model="modalform.price" placeholder="Price (€)" required ng-init="focused5 = false" ng-focus="focused5 = true" ng-blur="focused5 = false" />
     </div>
   </div>
 </div>
