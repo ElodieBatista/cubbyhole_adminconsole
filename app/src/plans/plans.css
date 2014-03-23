@@ -21,3 +21,8 @@
 .navtop-items-list .navtop-item:nth-child(3) .dropdown-menu a:hover {
   background-color: rgb(255, 108, 164);
 }
+
+.modal-body {
+  max-height: 450px;
+  overflow-y: auto;
+}

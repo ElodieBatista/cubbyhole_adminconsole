@@ -8,21 +8,38 @@ module.config(function config($routeProvider) {
     {
       templateUrl: '/src/users/users.tpl.html',
       controller: 'UsersCtrl',
+      reloadOnSearch: false,
       authRequired: true
     })
 });
 
 module.controller('UsersCtrl',
-  function UsersCtrl(conf, $rootScope, $scope, apiService) {
+  function UsersCtrl(conf, $rootScope, $scope, $routeParams, $location, $route, apiService) {
+    $scope.page = $routeParams.page;
+
+    $scope.start = 0;
+    $scope.limit = 5;
+    $scope.hasMore = true;
+
+    if ($scope.page !== undefined) {
+      $scope.start = $scope.limit * ($scope.page - 1);
+    }
+
+
     $scope.usersSaved = [];
     $scope.currentPage = 0;
     $scope.gap = 3;
-    $scope.usersPerPage = 1;
     $scope.total = 3;
 
 
-    apiService.Users.get(function(res) {
+    apiService.Users.get({start:$scope.start, limit:$scope.limit}, function(res) {
       $scope.users = res.data;
+      $scope.hasMore = res.hasMore;
+
+      if ($scope.users.length === 0 && $scope.page > 1) {
+        $location.search({page: 1});
+        $route.reload();
+      }
     }, function(err) { $scope.errorShow(err); });
 
 
@@ -60,16 +77,35 @@ module.controller('UsersCtrl',
 
 
     $scope.prevPage = function() {
-      if ($scope.currentPage > 0) {
-        $scope.currentPage--;
+      if ($scope.start > 0) {
+        $scope.start -= $scope.limit;
+        apiService.Users.get({start:$scope.start, limit:$scope.limit}, function(res) {
+          $scope.users = res.data;
+          $scope.hasMore = res.hasMore;
+          $location.search({page: --$scope.page});
+        }, function(err) { $scope.errorShow(err); });
       }
+
+      /*if ($scope.currentPage > 0) {
+        $scope.currentPage--;
+      }*/
     };
 
 
     $scope.nextPage = function() {
-      if ($scope.currentPage < $scope.users.length - 1) {
-        $scope.currentPage++;
+      if ($scope.hasMore) {
+        $scope.start += $scope.limit;
+        apiService.Users.get({start:$scope.start, limit:$scope.limit}, function(res) {
+          $scope.users = res.data;
+          $scope.hasMore = res.hasMore;
+          $location.search({page: ++$scope.page});
+        }, function(err) { $scope.errorShow(err); });
       }
+
+
+      /*if ($scope.currentPage < $scope.users.length - 1) {
+        $scope.currentPage++;
+      }*/
     };
 
 

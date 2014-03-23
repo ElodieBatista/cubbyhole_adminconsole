@@ -41,7 +41,7 @@ module.factory('apiService', function(conf, $resource) {
     }),
 
 
-    Users: $resource(conf.epApi + '/user', {}, {
+    Users: $resource(conf.epApi + '/user/:start/:limit', {start:'@start', limit:'@limit'}, {
       'get': {
         method: 'GET'
       }
