@@ -36,9 +36,9 @@
             <a href ng-click="prevPage()">« Prev</a>
           </li>
 
-          <!--li ng-repeat="n in range(users.length, start, start + gap)" ng-class="{active: n == start}" ng-click="setPage(n)">
-            <a href ng-bind="n + 1">1</a>
-          </li-->
+          <li ng-repeat="n in getPaginationNbs(page)" ng-class="{active: n == page}" ng-click="setPage(n)">
+            <a href ng-bind="n">1</a>
+          </li>
 
           <li ng-class="{disabled: !hasMore}">
             <a href ng-click="nextPage()">Next »</a>
