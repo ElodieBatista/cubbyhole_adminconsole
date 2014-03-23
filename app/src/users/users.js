@@ -29,14 +29,19 @@ module.controller('UsersCtrl',
     $scope.usersSaved = [];
     $scope.gap = 3;
     $scope.total = 0;
+    $scope.pages = [];
+
+
+    $scope.update = function(res) {
+      $scope.users = res.data;
+      $scope.hasMore = res.hasMore;
+      $scope.total = 16;
+      $scope.pages = $scope.getPaginationNbs($scope.page);
+    };
 
 
     apiService.Users.get({start:$scope.start, limit:$scope.limit}, function(res) {
-      $scope.users = res.data;
-      $scope.hasMore = res.hasMore;
-      $scope.total = 15;
-      $scope.gap = 3;
-
+      $scope.update(res);
       if ($scope.users.length === 0 && $scope.page > 1) {
         $location.search({page: 1});
         $route.reload();
@@ -74,11 +79,9 @@ module.controller('UsersCtrl',
 
     $scope.setPage = function(n) {
       apiService.Users.get({start:$scope.limit * (n - 1), limit:$scope.limit}, function(res) {
-        $scope.users = res.data;
-        $scope.hasMore = res.hasMore;
         $scope.page = n;
         $scope.start = $scope.limit * ($scope.page - 1);
-        //$scope.total = 15;
+        $scope.update(res);
         $location.search({page: n});
       }, function(err) { $scope.errorShow(err); });
     };
@@ -86,12 +89,10 @@ module.controller('UsersCtrl',
 
     $scope.prevPage = function() {
       if ($scope.start > 0) {
-        $scope.start -= $scope.limit;
-        apiService.Users.get({start:$scope.start, limit:$scope.limit}, function(res) {
-          $scope.users = res.data;
-          $scope.hasMore = res.hasMore;
-          //$scope.total = 15;
+        apiService.Users.get({start:$scope.start - $scope.limit, limit:$scope.limit}, function(res) {
+          $scope.start -= $scope.limit;
           $location.search({page: --$scope.page});
+          $scope.update(res);
         }, function(err) { $scope.errorShow(err); });
       }
     };
@@ -99,11 +100,10 @@ module.controller('UsersCtrl',
 
     $scope.nextPage = function() {
       if ($scope.hasMore) {
-        $scope.start += $scope.limit;
-        apiService.Users.get({start:$scope.start, limit:$scope.limit}, function(res) {
-          $scope.users = res.data;
-          $scope.hasMore = res.hasMore;
+        apiService.Users.get({start:$scope.start + $scope.limit, limit:$scope.limit}, function(res) {
+          $scope.start += $scope.limit;
           $location.search({page: ++$scope.page});
+          $scope.update(res);
         }, function(err) { $scope.errorShow(err); });
       }
     };
@@ -146,7 +146,6 @@ module.controller('UsersCtrl',
         nbs.unshift(last);
       }
 
-      console.log(nbs);
       return nbs;
     };
   }
