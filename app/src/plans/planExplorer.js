@@ -16,13 +16,14 @@ module.directive('planExplorer', function() {
         }
       };
 
-      scope.peOpenModalNewPlan = function() {
+      scope.peOpenModalNewPlan = function(bandwidths) {
         scope.modalform = {};
 
         scope.modalOpts = {
           title: 'Create a plan',
           submitBtnVal: 'Create',
           submitFn: scope.createPlan,
+          bandwidths: bandwidths,
           templateUrl: 'src/plans/tpls/newPlan.tpl.html'
         };
         $('#appmodal').modal('show');
@@ -41,13 +42,21 @@ module.directive('planExplorer', function() {
       };
 
 
-      scope.peOpenModalEditPlan = function(plan) {
+      scope.peOpenModalEditPlan = function(plan, bandwidths) {
+        var getBandwidth = function(id) {
+          for (var i = 0; i < bandwidths.length; i++) {
+            if (bandwidths[i]._id === id) {
+              return bandwidths[i];
+            }
+          }
+        };
+
         scope.modalform = {
           name: plan.name,
           duration: plan.duration,
           storage: plan.storage,
           sharedQuota: plan.sharedQuota,
-          bandwidth: plan.bandwidth,
+          bandwidth: getBandwidth(plan.bandwidth._id),
           price: plan.price
         };
 
@@ -56,6 +65,7 @@ module.directive('planExplorer', function() {
           submitFn: scope.editPlan,
           submitFnExtraParam: plan._id,
           submitBtnVal: 'Edit',
+          bandwidths: bandwidths,
           templateUrl: 'src/plans/tpls/editPlan.tpl.html'
         };
         $('#appmodal').modal('show');

@@ -19,7 +19,13 @@ module.controller('PlansCtrl',
     }, function(err) { $scope.errorShow(err); });
 
 
+    apiService.Bandwidths.get(function(res) {
+      $scope.bandwidths = res.data;
+    }, function(err) { $scope.errorShow(err); });
+
+
     $scope.createPlan = function(plan) {
+      plan.bandwidth = plan.bandwidth._id;
       apiService.Plans.post({'plan':plan}, function(res) {
         $scope.plans.push(res.data);
       }, function(err) { $scope.errorShow(err); });
@@ -27,10 +33,11 @@ module.controller('PlansCtrl',
 
 
     $scope.editPlan = function(plan, id) {
+      plan.bandwidth = plan.bandwidth._id;
       apiService.Plan.put({'id':id, 'plan':plan}, function(res) {
         for (var i = 0, l = $scope.plans.length; i < l; i++) {
           if ($scope.plans[i]._id === id) {
-            $scope.plans[i] = plan;
+            $scope.plans[i] = res.data;
             break;
           }
         }

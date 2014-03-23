@@ -41,6 +41,13 @@ module.factory('apiService', function(conf, $resource) {
     }),
 
 
+    Bandwidths: $resource(conf.epApi + '/bandwidth', {}, {
+      'get': {
+        method: 'GET'
+      }
+    }),
+
+
     Users: $resource(conf.epApi + '/user/:start/:limit', {start:'@start', limit:'@limit'}, {
       'get': {
         method: 'GET'

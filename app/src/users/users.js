@@ -35,7 +35,7 @@ module.controller('UsersCtrl',
     $scope.update = function(res) {
       $scope.users = res.data;
       $scope.hasMore = res.hasMore;
-      $scope.total = 16;
+      $scope.total = res.total;
       $scope.pages = $scope.getPaginationNbs($scope.page);
     };
 

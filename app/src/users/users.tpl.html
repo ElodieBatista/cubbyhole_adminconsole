@@ -24,8 +24,7 @@
             </td>
             <td ng-bind="user.registrationDate | date"></td>
             <td ng-bind="user.currentPlan.plan.name"></td>
-            <td ng-if="user.verified" ng-bind="user.verified"></td>
-            <td ng-if="!user.verified">false</td>
+            <td ng-bind="user.verified"></td>
             <td ng-bind="user.isAllowed"></td>
           </tr>
           </tbody>

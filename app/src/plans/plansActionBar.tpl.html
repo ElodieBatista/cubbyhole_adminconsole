@@ -1,7 +1,7 @@
 <div class="row action-bar">
   <ul class="action-bar-right">
 
-    <li class="action-bar-item" ng-show="itemActive" ng-click="peOpenModalEditPlan(itemActive)">
+    <li class="action-bar-item" ng-show="itemActive" ng-click="peOpenModalEditPlan(itemActive, bandwidths)">
       <ng-include class="action-bar-icon" src="'/styles/icons/icon_edit.svg'"></ng-include>
       <span>Edit</span>
     </li>
@@ -13,7 +13,7 @@
 
     <li class="action-bar-separator" ng-show="itemActive"></li>
 
-    <li class="action-bar-item" data-toggle="modal" ng-click="peOpenModalNewPlan()">
+    <li class="action-bar-item" data-toggle="modal" ng-click="peOpenModalNewPlan(bandwidths)">
       <ng-include class="action-bar-icon" src="'/styles/icons/icon_plus.svg'"></ng-include>
       <span>Create Plan</span>
     </li>
