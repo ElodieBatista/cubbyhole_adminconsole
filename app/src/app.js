@@ -56,6 +56,7 @@ angular.module('consoleApp', [
   .run(function($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
       if (next.authRequired === true && !$rootScope.getToken()) {
+        $location.$$search = {};
         $location.path('/login');
       }
     });

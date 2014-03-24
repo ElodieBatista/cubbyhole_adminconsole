@@ -12,7 +12,7 @@
       <div class="row">
 
         <div class="col-md-offset-3 col-md-6 home-container-sign">
-          <div>
+          <div ng-if="getProfile() === undefined || getProfile() === null">
             <ul class="nav nav-tabs" id="sign-nav">
               <li class="sign-nav-item active"><a data-toggle="tab" href="">Sign In</a></li>
             </ul>
@@ -41,9 +41,9 @@
             </div>
           </div>
 
-          <div id="home-authenticated-container">
+          <div id="home-authenticated-container" ng-if="getProfile() !== undefined && getProfile() !== null">
             <h3 class="home-authenticated-title">Welcome back</h3>
-            <h4 class="highlight home-authenticated-title" id="home-authenticated-title-email"></h4>
+            <h4 class="highlight home-authenticated-title" id="home-authenticated-title-email" ng-bind="getProfile().email"></h4>
 
             <p class="home-authenticated-title">You can <a ng-href="#/logout">logout here</a> or</p>
 
