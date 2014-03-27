@@ -6,7 +6,7 @@
       <span>Edit</span>
     </li>
 
-    <li class="action-bar-item" ng-show="itemActive && !itemActive.isNotRemovable" ng-click="peOpenModalDeletePlan(itemActive)">
+    <li class="action-bar-item" ng-show="itemActive && itemActive.isMutable" ng-click="peOpenModalDeletePlan(itemActive)">
       <ng-include class="action-bar-icon" src="'/styles/icons/icon_delete.svg'"></ng-include>
       <span>Delete</span>
     </li>

@@ -57,7 +57,8 @@ module.directive('planExplorer', function() {
           storage: plan.storage,
           sharedQuota: plan.sharedQuota,
           bandwidth: getBandwidth(plan.bandwidth._id),
-          price: plan.price
+          price: plan.price,
+          isMutable: plan.isMutable
         };
 
         scope.modalOpts = {
