@@ -47,7 +47,6 @@ module.factory('apiService', function(conf, $resource) {
       }
     }),
 
-
     Users: $resource(conf.epApi + '/user/:start/:limit', {start:'@start', limit:'@limit'}, {
       'get': {
         method: 'GET'
@@ -66,6 +65,9 @@ module.factory('apiService', function(conf, $resource) {
         params: {
           isAllowed:'@isAllowed'
         }
+      },
+      'delete': {
+        method: 'DELETE'
       }
     })
   };

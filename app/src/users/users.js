@@ -65,6 +65,19 @@ module.controller('UsersCtrl',
     };
 
 
+    $scope.deleteUser = function(form, id) {
+      apiService.User.delete({'id':id}, function(res) {
+        for (var i = 0, l = $scope.users.length; i < l; i++) {
+          if ($scope.users[i]._id === id) {
+            $scope.users.splice(i, 1);
+            $scope.toggleItem(null);
+            break;
+          }
+        }
+      }, function(err) { $scope.errorShow(err); });
+    };
+
+
     $scope.toggleAuthorisation = function(id, isAllowed) {
       apiService.User.put({'id':id, 'isAllowed':isAllowed}, function(res) {
         for (var i = 0, l = $scope.users.length; i < l; i++) {

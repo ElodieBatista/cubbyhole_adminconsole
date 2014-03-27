@@ -16,6 +16,7 @@ module.directive('userExplorer', function() {
         }
       };
 
+
       scope.ueOpenModalSearchUser = function() {
         scope.modalOpts = {
           title: 'Search for a user',
@@ -25,6 +26,19 @@ module.directive('userExplorer', function() {
         };
         $('#appmodal').modal('show');
       };
+
+
+      scope.ueOpenModalDeleteUser = function(user) {
+        scope.modalOpts = {
+          title: 'Delete ' + user.email + ' user',
+          submitBtnVal: 'Delete',
+          submitFn: scope.deleteUser,
+          submitFnExtraParam: user._id,
+          obj: user,
+          templateUrl: 'src/users/tpls/deleteUser.tpl.html'
+        };
+        $('#appmodal').modal('show');
+      }
     }
   };
 });

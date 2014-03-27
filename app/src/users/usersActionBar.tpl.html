@@ -1,23 +1,34 @@
 <div class="row action-bar">
 
   <ul class="action-bar-right">
+
     <li class="action-bar-item" ng-show="itemActive && itemActive.isAllowed" ng-click="toggleAuthorisation(itemActive._id, false)">
       <ng-include class="action-bar-icon" src="'/styles/icons/icon_cross.svg'"></ng-include>
       <span>Disallow</span>
     </li>
+
     <li class="action-bar-item" ng-show="itemActive && !itemActive.isAllowed" ng-click="toggleAuthorisation(itemActive._id, true)">
       <ng-include class="action-bar-icon" src="'/styles/icons/icon_check.svg'"></ng-include>
       <span>Allow</span>
     </li>
 
+    <li class="action-bar-item" ng-show="itemActive" ng-click="ueOpenModalDeleteUser(itemActive)">
+      <ng-include class="action-bar-icon" src="'/styles/icons/icon_delete.svg'"></ng-include>
+      <span>Delete</span>
+    </li>
+
     <li class="action-bar-separator" ng-show="itemActive"></li>
+
     <li class="action-bar-item" data-toggle="modal" ng-show="usersSaved.length > 0" ng-click="clearSearch()">
       <ng-include class="action-bar-icon" src="'/styles/icons/icon_search.svg'"></ng-include>
       <span>Clear Search</span>
     </li>
+
     <li class="action-bar-item" data-toggle="modal" ng-show="usersSaved.length === 0" ng-click="ueOpenModalSearchUser()">
       <ng-include class="action-bar-icon" src="'/styles/icons/icon_search.svg'"></ng-include>
       <span>Search</span>
     </li>
+
   </ul>
+
 </div>
