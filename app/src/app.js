@@ -7,7 +7,8 @@ angular.module('consoleApp', [
     'ngAnimate'
   ])
   .constant('conf', {
-    'epApi': 'http://localhost:3000'
+    'epApi': 'http://localhost:3000',
+    'epWeb': 'http://localhost:8000'
   })
   .config(function(conf, $locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider, $provide) {
     $httpProvider.defaults.headers.common['X-Cub-AuthToken'] = localStorage.getItem('cubbyhole-consoleApp-token');
@@ -53,7 +54,9 @@ angular.module('consoleApp', [
 
     $sceDelegateProvider.resourceUrlWhitelist([conf.epApi + '**', 'self'])
   })
-  .run(function($rootScope, $location) {
+  .run(function(conf, $rootScope, $location) {
+    $rootScope.conf = conf;
+
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
       if (next.authRequired === true && !$rootScope.getToken()) {
         $location.$$search = {};
