@@ -14,6 +14,14 @@ module.factory('apiService', function(conf, $resource) {
         }
       }
     }),
+    AuthError: {
+      POST: {
+        401: 'Please, check your emails to verify your address.',
+        403: 'Your account has been deactivated by our administrator. For more information, please send an email to cubbyhole.contact@gmail.com.',
+        404: 'Incorrect email or password.',
+        422: 'This email address already exists. Please, try another one.'
+      }
+    },
 
 
     Plans: $resource(conf.epApi + '/plan', {}, {
@@ -27,7 +35,6 @@ module.factory('apiService', function(conf, $resource) {
         }
       }
     }),
-
     Plan: $resource(conf.epApi + '/plan/:id', {id:'@id'}, {
       'put': {
         method: 'PUT',
@@ -39,6 +46,15 @@ module.factory('apiService', function(conf, $resource) {
         method: 'DELETE'
       }
     }),
+    PlanError: {
+      GET: {
+        404: 'This plan doesn\'t exist.'
+      },
+      DELETE: {
+        403: 'This plan can\'t be deleted.',
+        404: 'This plan doesn\'t exist.'
+      }
+    },
 
 
     Bandwidths: $resource(conf.epApi + '/bandwidth', {}, {
@@ -47,18 +63,17 @@ module.factory('apiService', function(conf, $resource) {
       }
     }),
 
+
     Users: $resource(conf.epApi + '/user/:start/:limit', {start:'@start', limit:'@limit'}, {
       'get': {
         method: 'GET'
       }
     }),
-
     UserEmail: $resource(conf.epApi + '/user/email/:email', {email:'@email'}, {
       'get': {
         method: 'GET'
       }
     }),
-
     User: $resource(conf.epApi + '/user/:id', {id:'@id'}, {
       'put': {
         method: 'PUT',
@@ -69,6 +84,14 @@ module.factory('apiService', function(conf, $resource) {
       'delete': {
         method: 'DELETE'
       }
-    })
+    }),
+    UserError: {
+      GET: {
+        404: 'This user doesn\'t exist.'
+      },
+      PUT: {
+        404: 'This user doesn\'t exist.'
+      }
+    }
   };
 });
