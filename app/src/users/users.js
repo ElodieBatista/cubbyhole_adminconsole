@@ -133,13 +133,12 @@ module.controller('UsersCtrl',
     };
 
     $scope.getPaginationNbs = function(pageNb) {
-      var nbOfPages = $scope.getNbOfPages();
-      var nbs = [];
-      var even = ($scope.gap % 2 === 0);
-      var middle = Math.ceil($scope.gap / 2) - 1;
-
-      var start = -middle;
-      var end = (even ? middle + 1 : middle);
+      var nbOfPages = $scope.getNbOfPages(),
+          nbs = [],
+          even = ($scope.gap % 2 === 0),
+          middle = Math.ceil($scope.gap / 2) - 1,
+          start = -middle,
+          end = (even ? middle + 1 : middle);
 
       for (var i = start; i <= end; i++) {
         nbs.push(pageNb + i);
