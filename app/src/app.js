@@ -60,6 +60,7 @@ angular.module('consoleApp', [
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
       if (next.authRequired === true && !$rootScope.getToken()) {
         $location.$$search = {};
+        delete $location.$$search.page;
         $location.path('/login');
       }
     });
