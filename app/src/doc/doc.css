@@ -1,0 +1,141 @@
+/* DOC */
+.doc-container {
+    background-color: rgb(245, 245, 245);
+}
+
+.doc-container .nav {
+    margin-top: 20px;
+}
+
+.doc-tabs {
+    margin: 0;
+}
+
+.url-container {
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+}
+
+.url-header {
+    height: 30px;
+    line-height: 30px;
+}
+
+.url-method {
+    color: white;
+    text-transform: uppercase;
+}
+
+.GET.url-method {
+    background-color: rgb(141, 209, 97);
+}
+
+.POST.url-method {
+    background-color: rgb(63, 169, 245);
+}
+
+.PUT.url-method {
+    background-color: rgb(255, 147, 30);
+}
+
+.DELETE.url-method {
+    background-color: rgb(255, 29, 37);
+}
+
+.GET.url-method-uri {
+    color: rgb(141, 209, 97);
+}
+
+.POST.url-method-uri {
+    color: rgb(63, 169, 245);
+}
+
+.PUT.url-method-uri {
+    color: rgb(255, 147, 30);
+}
+
+.DELETE.url-method-uri {
+    color: rgb(255, 29, 37);
+}
+
+.url-synopsis,
+.url-requiredauth,
+.url-parameters {
+    padding: 10px 15px;
+}
+
+.url-title {
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.doc-table-params {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.doc-table-params td:last-child {
+    text-align: center;
+}
+
+.doc-table-params td:first-child {
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.doc-table-params th {
+    text-transform: uppercase;
+}
+
+.doc-table-params thead tr:first-child {
+    border-bottom: 2px solid rgb(235, 235, 235);
+}
+
+.doc-table-params tr.GET th {
+    color: rgb(141, 209, 97);
+}
+
+.doc-table-params tr.POST th {
+    color: rgb(63, 169, 245);
+}
+
+.doc-table-params tr.PUT th {
+    color: rgb(255, 147, 30);
+}
+
+.doc-table-params tr.DELETE th {
+    color: rgb(255, 29, 37);
+}
+
+.GET td:first-child {
+    color: rgb(122, 201, 67);
+}
+
+tbody tr.GET:hover {
+    background-color: rgba(141, 209, 97, 0.1);
+}
+
+.POST td:first-child {
+    color: rgb(63, 169, 245);
+}
+
+tbody tr.POST:hover {
+    background-color: rgba(95, 182, 245, 0.1);
+}
+
+.PUT td:first-child {
+    color: rgb(255, 147, 30);
+}
+
+tbody tr.PUT:hover {
+    background-color: rgba(255, 168, 72, 0.1);
+}
+
+.DELETE td:first-child {
+    color: rgb(255, 29, 37);
+}
+
+tbody tr.DELETE:hover {
+    background-color: rgba(254, 80, 81, 0.1);
+}

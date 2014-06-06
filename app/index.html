@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="src/plans/plans.css">
+    <link rel="stylesheet" href="src/doc/doc.css">
   </head>
 
   <body id="ng-app" ng-app="consoleApp">
@@ -33,6 +34,13 @@
             </li>
             <li class="navtop-item" ng-class="{ active: isActive('/plans')}">
               <a href="index.html#/plans" onclick="collapseNavbar();">Plans</a>
+            </li>
+            <li class="navtop-item" ng-class="{ active: isActive('/doc')}">
+                <a data-toggle="dropdown" href="">API Documentation &nbsp;&nbsp;<i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="index.html#/docmain" onclick="collapseNavbar();">Main API</a></li>
+                    <li><a href="index.html#/docdashboard" onclick="collapseNavbar();">Dashboard API</a></li>
+                </ul>
             </li>
             <li class="navtop-item dropdown">
               <a data-toggle="dropdown" href="">Me &nbsp;&nbsp;<i class="fa fa-angle-down"></i></a>
@@ -84,5 +92,7 @@
     <script src="src/plans/planExplorer.js"></script>
     <script src="src/users/users.js"></script>
     <script src="src/users/userExplorer.js"></script>
+    <script src="src/doc/docmain.js"></script>
+    <script src="src/doc/docdashboard.js"></script>
   </body>
 </html>

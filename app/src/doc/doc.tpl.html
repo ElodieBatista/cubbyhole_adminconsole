@@ -1,0 +1,56 @@
+<div class="row-fluid" id="sign-nav">
+    <div class="col-md-12 doc-container">
+        <div class="row-fluid">
+            <div class="col-md-8 col-md-offset-2">
+
+                <div class="primary">
+                    <ul class="nav nav-tabs">
+                        <li class="sign-nav-item" ng-repeat="ep in endpoints track by $index" ng-class="{active : $first, item : true}">
+                            <a data-target="#{{ep.name.substring(1)}}" data-toggle="tab" ng-bind="ep.name"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    <div class="row-fluid tab-pane" ng-repeat="ep in endpoints track by $index" ng-class="{active : $first, item : true}" id="{{ep.name.substring(1)}}">
+                        <div class="url-container" ng-repeat="method in ep.methods track by $index">
+                            <div class="row-fluid url-header">
+                                <div class="col-md-2 url-method" ng-class="method.HTTPMethod" ng-bind="method.HTTPMethod"></div>
+                                <div class="col-md-3 url-method-uri" ng-class="method.HTTPMethod" ng-bind="method.URI"></div>
+                                <div class="col-md-3 url-method-name" ng-bind="method.MethodName"></div>
+                            </div>
+
+                            <div class="row-fluid url-synopsis" ng-bind="method.Synopsis"></div>
+                            <div class="row-fluid url-requiredauth">
+                                <p class="url-title">Requires OAuth: <span ng-bind="method.RequiresOAuth"></span></p>
+                            </div>
+                            <div class="row-fluid url-parameters" ng-show="method.parameters.length > 0">
+                                <p class="url-title">Parameters:</p>
+
+                                <table class="doc-table-params">
+                                    <thead>
+                                    <tr ng-class="method.HTTPMethod">
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                        <th>Is Required</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-class="method.HTTPMethod" ng-repeat="param in method.parameters">
+                                        <td ng-bind="param.Name"></td>
+                                        <td ng-bind="param.Type"></td>
+                                        <td ng-bind="param.Description"></td>
+                                        <td ng-bind="param.Required"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
