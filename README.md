@@ -18,7 +18,7 @@ Credentials:
 
 # Changing IP Addresses
 
-Go to /src/app.js & replace lines 10 and 11
+Go to /src/app.js & replace lines 10, 11 and 12
 
 	.constant('conf', {
     		'epApi': 'http://localhost:3000',
