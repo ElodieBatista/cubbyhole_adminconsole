@@ -1,6 +1,9 @@
 /* DOC */
 .doc-container {
     background-color: rgb(245, 245, 245);
+    position: relative;
+    bottom: 0;
+    top: 50px;
 }
 
 .doc-container .nav {
@@ -72,6 +75,10 @@
 .doc-table-params {
     font-size: 13px;
     margin-top: 10px;
+}
+
+.doc-table-params td {
+    white-space: normal;
 }
 
 .doc-table-params td:last-child {
