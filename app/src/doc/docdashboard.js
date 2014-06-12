@@ -15,6 +15,8 @@ module.config(function config($routeProvider) {
 
 module.controller('DocDashboardCtrl',
   function DocDashboardCtrl(conf, $scope, apiService) {
-
+    apiService.DocumentationDashboard.get(function(res) {
+      $scope.endpoints = res.data;
+    });
   }
 );

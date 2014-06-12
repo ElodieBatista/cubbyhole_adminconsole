@@ -23,6 +23,16 @@ module.factory('apiService', function(conf, $resource) {
       }
     },
 
+    DocumentationMain: $resource(conf.epApi + '/documentation', {}, {
+      'get': {
+        method: 'GET'
+      }
+    }),
+    DocumentationDashboard: $resource(conf.epDbdApi + '/documentation', {}, {
+      'get': {
+        method: 'GET'
+      }
+    }),
 
     Plans: $resource(conf.epApi + '/plan', {}, {
       'get': {

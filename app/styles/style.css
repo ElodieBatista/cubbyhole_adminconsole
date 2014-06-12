@@ -486,6 +486,7 @@ input[type="file"] {
 .quinary .nav-tabs .active a    { color: rgb(255, 108, 164) !important; }
 
 .sign-nav-item {
+  cursor: pointer;
   margin-bottom: 0;
   background-repeat: no-repeat;
   background-position: 0 40px;
