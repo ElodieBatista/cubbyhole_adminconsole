@@ -1,9 +1,9 @@
 /* DOC */
 .doc-container {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(220, 220, 220);
     position: relative;
     bottom: 0;
-    top: 50px;
+    /*top: 50px;*/
 }
 
 .doc-container .nav {
@@ -30,7 +30,7 @@
 }
 
 .GET.url-method {
-    background-color: rgb(141, 209, 97);
+    background-color: rgb(97, 169, 48);
 }
 
 .POST.url-method {
@@ -46,7 +46,7 @@
 }
 
 .GET.url-method-uri {
-    color: rgb(141, 209, 97);
+    color: rgb(97, 169, 48);
 }
 
 .POST.url-method-uri {
@@ -116,7 +116,7 @@
 }
 
 .GET td:first-child {
-    color: rgb(122, 201, 67);
+    color: rgb(97, 169, 48);
 }
 
 tbody tr.GET:hover {

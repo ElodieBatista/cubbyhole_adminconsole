@@ -1,13 +1,13 @@
 .navtop-items-list .navtop-item:nth-child(2),
 .navtop-items-list .navtop-item:nth-child(2).open > a {
-  background-image: -webkit-linear-gradient(rgb(122, 201, 67), rgb(122, 201, 67));
-  background-image: -moz-linear-gradient(rgb(122, 201, 67), rgb(122, 201, 67));
-  background-image: -o-linear-gradient(rgb(122, 201, 67), rgb(122, 201, 67));
-  background-image: -ms-linear-gradient(rgb(122, 201, 67), rgb(122, 201, 67));
+  background-image: -webkit-linear-gradient(rgb(97, 169, 48), rgb(97, 169, 48));
+  background-image: -moz-linear-gradient(rgb(97, 169, 48), rgb(97, 169, 48));
+  background-image: -o-linear-gradient(rgb(97, 169, 48), rgb(97, 169, 48));
+  background-image: -ms-linear-gradient(rgb(97, 169, 48), rgb(97, 169, 48));
 }
 
 .navtop-items-list .active:nth-child(2) > a {
-  color: rgb(122, 201, 67) !important;
+  color: rgb(97, 169, 48) !important;
 }
 
 .navtop-items-list .navtop-item:nth-child(4),
